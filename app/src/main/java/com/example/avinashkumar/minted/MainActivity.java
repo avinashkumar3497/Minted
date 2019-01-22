@@ -14,13 +14,13 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private SoundPool soundPool=new SoundPool(2, AudioManager.STREAM_MUSIC,0);
+    //private SoundPool soundPool=new SoundPool(2, AudioManager.STREAM_MUSIC,0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.small_beep_sms);
         Button rollButton;
         rollButton=(Button) findViewById(R.id.roll_button);
         final ImageView leftDice;
@@ -37,14 +37,14 @@ public class MainActivity extends AppCompatActivity {
         };
 
 
-        final int soundID=soundPool.load(getApplicationContext(),R.raw.note1_c,1);
+        //final int soundID=soundPool.load(getApplicationContext(),R.raw.note1_c,1);
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.small_beep_sms);
                 //mediaPlayer.start(); // no need to call prepare(); create() does that for you
-                soundPool.play(soundID,1.0f,1.0f,1,1,1.0f);
-
+                //soundPool.play(soundID,1.0f,1.0f,1,1,1.0f);
+                mediaPlayer.start();
                 Log.d("Dicee", "the button got pressed");
 
                 Random randomNumberGenerator= new Random();
